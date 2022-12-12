@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   likedSongs: { type: [String], default: [] },
   playlists: { type: [String], default: [] },
   recentSongs: { type: [String], default: [] },
-  isAdmin: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: true },
   isPremium: { type: Boolean, default: false },
   isArtist: { type: Boolean, default: false },
   artistSongs: { type: [mongoose.Schema.Types.ObjectId], default: [] },
@@ -38,7 +38,7 @@ const validate = (user) => {
     date: Joi.string().required(),
     year: Joi.string().required(),
     gender: Joi.string().valid("male", "female").required(),
-    isArtist: Joi.boolean().required(),
+    isArtist: Joi.boolean().optional(),
   });
   return schema.validate(user);
 };

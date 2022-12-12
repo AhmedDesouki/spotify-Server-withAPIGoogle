@@ -62,7 +62,8 @@ const getLikedSongs = async (req, res) => {
 };
 
 const getSong = async (req, res) => {
-  const dir = __dirname.replace("/controllers", "");
+  const dir = __dirname.replace("controllers", "");
+  console.log(dir);
   let song;
   if (req.params.id) song = await Song.findById(req.params.id);
   else {
